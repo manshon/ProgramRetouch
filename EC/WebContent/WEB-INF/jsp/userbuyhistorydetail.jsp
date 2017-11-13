@@ -33,7 +33,7 @@
 							<tbody>
 								<tr>
 									<td class="center"><fmt:formatDate value="${bdb.buyDate}" pattern="yyyy年MM月dd日HH時mm分"/></td>
-									<td class="center">${bdb.delivertMethodId}</td>
+									<td class="center">${bdb.deliveryMethodName}</td>
 									<td class="center">${bdb.totalPrice}円</td>
 								</tr>
 
@@ -62,6 +62,10 @@
 									<td class="center">${detail.price }円</td>
 								</tr>
 							</c:forEach>
+								<tr>
+									<td class="center">${bdb.deliveryMethodName}</td>
+									<td class="center">${bdb.deliveryMethodPrice}円</td>
+								</tr>
 
 							</tbody>
 						</table>
