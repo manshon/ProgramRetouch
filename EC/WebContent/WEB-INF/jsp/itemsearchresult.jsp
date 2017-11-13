@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="beans.ItemDataBeans"%>
 <%@page import=" java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +11,7 @@
 <title>検索結果</title>
 <jsp:include page="/baselayout/head.html" />
 <%
-	ArrayList<ItemDataBeans> itemList = (ArrayList<ItemDataBeans>) request.getAttribute("itemList");
+
 	String searchWord = (String) session.getAttribute("searchWord");
 	int pageMax = (int) request.getAttribute("pageMax");
 	int pageNum = (int) request.getAttribute("pageNum");
@@ -37,24 +40,28 @@
 		</div>
 		<div class="section">
 			<!--   商品情報   -->
+
 			<div class="row">
 				<%
 					int i = 0;
-					for (ItemDataBeans item : itemList) {
-						i++;
+				%>
+				<c:forEach var="item" items="${itemList}">
+				<%
+					i++;
 				%>
 				<div class="col s12 m3">
 					<div class="card">
 						<div class="card-image">
-							<a href="Item?item_id=<%=item.getId()%>&page_num=<%=pageNum%>"><img src="<%="img/" + item.getFileName()%>"></a>
+							<a href="Item?item_id=${item.id}&page_num=<%=pageNum%>"><img src="img/${item.fileName}"></a>
 						</div>
 						<div class="card-content">
-							<span class="card-title"><%=item.getName()%></span>
-							<p><%=item.getPrice()%>円
+							<span class="card-title">${item.name}</span>
+							<p>${item.price}円
 							</p>
 						</div>
 					</div>
 				</div>
+				</c:forEach>
 				<%
 					if (i % 4 == 0) {
 				%>
@@ -63,9 +70,7 @@
 				<%
 					}
 				%>
-				<%
-					}
-				%>
+
 			</div>
 		</div>
 		<div class="row center">

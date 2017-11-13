@@ -49,9 +49,9 @@
 									%>
 									<tr>
 
-										<td class="center"><%=bdb.getDeliveryMethodName()%></td>
+										<td class="center">${dmdb.name}</td>
 										<td class="center"></td>
-										<td class="center"><%=bdb.getDeliveryMethodPrice()%>円</td>
+										<td class="center">${dmdb.price}円</td>
 									</tr>
 									<tr>
 										<td class="center"></td>
